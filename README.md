@@ -4,7 +4,7 @@ A premium, fully responsive, and feature-rich **Language Translation Web Applica
 
 This project was built as part of the **CodeAlpha Internship program (Domain: Web Development, Task 1)**.
 
-🌐 **Live Demo:** [Click here to try the translator live!](https://dhaarani-r.github.io/CodeAlpha_Language_Translator/) *(Replace with actual deployed link)*
+🌐 **Live Demo:** [Click here to try the translator live!](https://dhaarani-r.github.io/CodeAlpha_Language_Translator/) 
 
 ---
 
@@ -48,12 +48,3 @@ This app includes a lightweight Python proxy server (`server.py`) that serves th
 4. To stop the server, press `Ctrl+C` in the terminal.
 
 ---
-
-## 🌍 Deploying to GitHub Pages (Free Hosting)
-
-To deploy this project to the web so anyone can visit it:
-1. Push this folder to your public GitHub repository named **`CodeAlpha_Language_Translator`**.
-2. Go to the **Settings** tab of your repository on GitHub.
-3. In the left menu, click **Pages**.
-4. Under **Build and deployment**, set the Branch source to `main` (or `master`) and click **Save**.
-5. After 1–2 minutes, refresh the page. GitHub will provide a link at the top (e.g., `https://dhaarani-r.github.io/CodeAlpha_Language_Translator/`). Add this link to your repository description and LinkedIn video!
