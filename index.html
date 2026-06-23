@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- The <head> contains metadata about the page that doesn't show up in the main browser window. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlphaTranslate - Voice & Text</title>
+    
+    <!-- Link to Google Fonts to use a beautiful modern typeface called 'Outfit' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to FontAwesome for modern icons (microphone, speaker, copy, swap, gear, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Link to our stylesheet file where we will write the colors, styles, and animations -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated Background Blobs for unique UI -->
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <!-- Main Container that wraps our entire application layout -->
+    <div class="app-container">
+        
+        <!-- Header area with the app title and a Theme Toggle button -->
+        <header class="app-header">
+            <div class="logo">
+                <i class="fa-solid fa-language logo-icon"></i>
+                <h1>Alpha<span>Translate</span></h1>
+            </div>
+            
+            <!-- Dark / Light theme toggle button -->
+            <button id="theme-toggle" class="theme-btn" title="Toggle Light/Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </header>
+
+        <!-- Main Card Component: This will use the "Glassmorphism" styling -->
+        <main class="translator-card">
+            
+            <!-- Row 1: Language Selectors and Swap button -->
+            <div class="language-row">
+                <!-- Source Language Dropdown -->
+                <div class="select-box">
+                    <select id="source-lang">
+                        <option value="detect">Auto-Detect Language</option>
+                        <!-- Other languages will be populated dynamically by JavaScript -->
+                    </select>
+                </div>
+
+                <!-- Swap Button (rotates when hovered/clicked) -->
+                <button id="swap-btn" class="icon-btn swap-btn" title="Swap Languages">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+
+                <!-- Target Language Dropdown -->
+                <div class="select-box">
+                    <select id="target-lang">
+                        <!-- Languages will be populated dynamically by JavaScript -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Row 2: Dual Panel Input & Output Text boxes -->
+            <div class="panels-container">
+                
+                <!-- Left Panel: Input Area -->
+                <div class="text-panel source-panel">
+                    <textarea id="source-text" placeholder="Type or paste text to translate..." maxlength="1000"></textarea>
+                    
+                    <!-- Inner Control bar for source text (speech-to-text, clear, character count) -->
+                    <div class="panel-controls">
+                        <div class="control-buttons">
+                            <!-- Microphone button for Voice Input -->
+                            <button id="record-btn" class="control-btn" title="Start Voice Typing">
+                                <i class="fa-solid fa-microphone"></i>
+                            </button>
+                            <!-- Speaker button to listen to source text -->
+                            <button id="speak-source-btn" class="control-btn" title="Listen to Text">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                            <!-- Clear input button -->
+                            <button id="clear-btn" class="control-btn" title="Clear Text">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <!-- Character Counter (Max 1000 characters) -->
+                        <span class="char-count"><span id="char-num">0</span>/1000</span>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Output Area -->
+                <div class="text-panel target-panel">
+                    <!-- The translated textarea is "readonly" so the user can't manually edit the translated result -->
+                    <textarea id="target-text" placeholder="Translation will appear here..." readonly></textarea>
+                    
+                    <!-- Pronunciation subtitle bar (shows romanized text like "vanakkam" for Tamil) -->
+                    <div id="pronunciation-bar" class="pronunciation-bar" style="display: none;">
+                        <i class="fa-solid fa-spell-check"></i>
+                        <span id="pronunciation-text"></span>
+                    </div>
+                    
+                    <!-- Inner Control bar for target text (copy, speak translation) -->
+                    <div class="panel-controls">
+                        <div class="control-buttons">
+                            <!-- Speaker button to listen to translated text -->
+                            <button id="speak-target-btn" class="control-btn" title="Listen to Translation">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                            <!-- Clipboard copy button -->
+                            <button id="copy-btn" class="control-btn" title="Copy Translation">
+                                <i class="fa-solid fa-copy"></i>
+                                <span class="tooltip" id="copy-tooltip">Copy</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Status indicator showing if it's currently translating -->
+                        <div id="status-indicator" class="status-indicator">
+                            <span class="spinner"></span>
+                            <span>Translating...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Row 3: Action Buttons at the bottom -->
+            <div class="actions-row">
+                <button id="translate-btn" class="primary-btn">
+                    <span>Translate Now</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+        </main>
+
+        <!-- History Section (Unique Feature) -->
+        <section id="history-section" class="history-card">
+            <div class="history-header">
+                <h2><i class="fa-solid fa-clock-rotate-left"></i> Translation History</h2>
+                <button id="clear-history-btn" class="clear-history-btn" title="Clear All History">Clear All</button>
+            </div>
+            <div id="history-list" class="history-list">
+                <p class="no-history">No translations yet. Start translating to build history!</p>
+            </div>
+        </section>
+
+        <!-- Footer containing the watermark and status -->
+        <footer class="app-footer">
+            <p>CodeAlpha Internship Project &bull; Built with Vanilla Web Tech</p>
+        </footer>
+
+    </div>
+
+    <!-- Link to our JavaScript logic file. This is loaded at the end so it executes after the HTML is loaded -->
+    <script src="app.js"></script>
+</body>
+</html>
