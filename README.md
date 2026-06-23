@@ -56,4 +56,4 @@ To deploy this project to the web so anyone can visit it:
 2. Go to the **Settings** tab of your repository on GitHub.
 3. In the left menu, click **Pages**.
 4. Under **Build and deployment**, set the Branch source to `main` (or `master`) and click **Save**.
-5. After 1–2 minutes, refresh the page. GitHub will provide a link at the top (e.g., `https://username.github.io/CodeAlpha_Language_Translator/](https://dhaarani-r.github.io/CodeAlpha_Language_Translator/`). Add this link to your repository description and LinkedIn video!
+5. After 1–2 minutes, refresh the page. GitHub will provide a link at the top (e.g., `https://dhaarani-r.github.io/CodeAlpha_Language_Translator/`). Add this link to your repository description and LinkedIn video!
