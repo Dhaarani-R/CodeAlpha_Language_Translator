@@ -4,7 +4,7 @@ A premium, fully responsive, and feature-rich **Language Translation Web Applica
 
 This project was built as part of the **CodeAlpha Internship program (Domain: Web Development, Task 1)**.
 
-🌐 **Live Demo:** [Click here to try the translator live!](https://YOUR-GITHUB-USERNAME.github.io/CodeAlpha_Language_Translator/) *(Replace with actual deployed link)*
+🌐 **Live Demo:** [Click here to try the translator live!]([https://YOUR-GITHUB-USERNAME.github.io/CodeAlpha_Language_Translator/](https://dhaarani-r.github.io/CodeAlpha_Language_Translator/)) *(Replace with actual deployed link)*
 
 ---
 
